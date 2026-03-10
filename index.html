@@ -3,65 +3,574 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Syamchand Chilaka - Data Scientist & AI/ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #0f0f1e;
+            --text: #e8e8e8;
+            --text-light: #a0a0a0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            color: var(--text); 
+            background: var(--dark);
+        }
+        
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navigation */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            background: rgba(15,15,30,0.9); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(102,126,234,0.1);
+            padding: 1rem 0;
+        }
+        nav .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2rem; 
+        }
+        nav a { 
+            text-decoration: none; 
+            color: var(--text); 
+            font-weight: 500; 
+            transition: all 0.3s;
+        }
+        nav a:hover { color: var(--primary); }
+        
+        .admin-link {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+        .admin-link:hover {
+            opacity: 0.7;
+        }
+        
+        /* Hero */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 100px 20px 80px; 
+            position: relative; 
+            overflow: hidden; 
+            margin-top: 60px;
+        }
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            width: 600px; 
+            height: 600px; 
+            background: linear-gradient(135deg, var(--primary)40, var(--secondary)20); 
+            border-radius: 50%; 
+            top: -200px; 
+            right: -200px; 
+            filter: blur(80px);
+        }
+        
+        .hero-content { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+            position: relative; 
+            z-index: 2;
+        }
+        
+        .hero-text h1 { 
+            font-size: 3.2rem; 
+            line-height: 1.2; 
+            margin-bottom: 1rem;
+        }
+        .hero-text .greeting { 
+            font-size: 1.1rem; 
+            color: var(--text-light); 
+            margin-bottom: 0.5rem;
+        }
+        .hero-text .highlight { 
+            background: linear-gradient(120deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .hero-text .title { 
+            font-size: 1.3rem; 
+            color: var(--text-light); 
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons { 
+            display: flex; 
+            gap: 1rem; 
+            flex-wrap: wrap;
+        }
+        .btn { 
+            padding: 0.9rem 2rem; 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.7rem;
+        }
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px); 
+        }
+        .btn-secondary { 
+            background: transparent; 
+            border: 2px solid var(--primary); 
+            color: var(--primary);
+        }
+        
+        /* Profile Picture */
+        .hero-image { 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+        
+        .profile-container { 
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(102,126,234,0.4);
+            border: 3px solid rgba(102,126,234,0.3);
+            background: rgba(102,126,234,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .profile-pic { 
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Social buttons */
+        .social-buttons { 
+            display: flex; 
+            gap: 1rem; 
+            margin-top: 2rem;
+        }
+        .icon-btn { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: rgba(102,126,234,0.1); 
+            border: 1px solid rgba(102,126,234,0.3); 
+            color: var(--primary); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            text-decoration: none;
+        }
+        .icon-btn:hover { 
+            background: var(--primary); 
+            color: white; 
+        }
+        
+        /* Sections */
+        section { 
+            padding: 80px 20px; 
+        }
+        section h2 { 
+            font-size: 2.8rem; 
+            margin-bottom: 3rem; 
+            text-align: center;
+        }
+        
+        /* About */
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem;
+        }
+        .about-text p { 
+            margin-bottom: 1.5rem; 
+            color: var(--text-light); 
+            line-height: 1.8;
+        }
+        .about-stats { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2rem;
+        }
+        .stat-box { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); 
+            padding: 2rem; 
+            border-radius: 15px; 
+            text-align: center; 
+        }
+        .stat-box h3 { 
+            font-size: 2.5rem; 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        
+        /* Skills */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2.5rem;
+        }
+        .skill-card { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05)); 
+            padding: 2rem; 
+            border-radius: 15px;
+        }
+        .skill-card h3 { 
+            margin-bottom: 1.5rem; 
+            color: var(--primary);
+        }
+        .skill-item { 
+            margin-bottom: 1.5rem;
+        }
+        .skill-item h4 { 
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar { 
+            height: 6px; 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 3px; 
+            overflow: hidden;
+        }
+        .progress { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        /* Timeline */
+        .timeline { 
+            position: relative; 
+            padding: 2rem 0;
+        }
+        .timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 50%; 
+            top: 0; 
+            bottom: 0; 
+            width: 2px; 
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+        .timeline-item { 
+            margin-bottom: 3rem; 
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) { 
+            margin-right: 52%;
+        }
+        .timeline-item:nth-child(even) { 
+            margin-left: 52%;
+        }
+        .timeline-content { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05)); 
+            padding: 2rem; 
+            border-radius: 15px;
+        }
+        .timeline-dot { 
+            position: absolute; 
+            left: 50%; 
+            top: 1rem; 
+            width: 15px; 
+            height: 15px; 
+            background: white; 
+            border: 3px solid var(--primary); 
+            border-radius: 50%; 
+            transform: translateX(-50%);
+        }
+        
+        /* Projects */
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2.5rem;
+        }
+        .project-card { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05)); 
+            border-radius: 15px;
+        }
+        .project-header { 
+            padding: 2rem; 
+            border-bottom: 1px solid rgba(102,126,234,0.1);
+        }
+        .project-body { 
+            padding: 2rem;
+        }
+        .tech-tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 0.5rem;
+        }
+        .tech-tag { 
+            background: linear-gradient(135deg, var(--primary)20, var(--secondary)20); 
+            color: var(--primary); 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 20px; 
+            font-size: 0.85rem;
+        }
+        
+        /* Contact Form */
+        .contact-section { 
+            text-align: center;
+        }
+        .contact-form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05)); 
+            padding: 3rem; 
+            border-radius: 15px;
+        }
+        .form-group { 
+            margin-bottom: 1.5rem; 
+            text-align: left;
+        }
+        .form-group input,
+        .form-group textarea { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid rgba(102,126,234,0.2); 
+            border-radius: 8px; 
+            background: rgba(255,255,255,0.05); 
+            color: var(--text); 
+            font-family: inherit;
+        }
+        
+        footer { 
+            background: #1a1a2e; 
+            text-align: center; 
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <h1>Your Name</h1>
-        <p>Welcome to my professional portfolio.</p>
-        <a href="path/to/CV.pdf" class="download-btn">Download CV</a>
-    </header>
-    
-    <section class="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SC</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html" class="admin-link" title="Admin Panel">⚙️</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="greeting">Hey 👋, I'm</p>
+                <h1><span class="highlight">Syamchand Chilaka</span></h1>
+                <p class="title">Data Scientist & AI/ML Engineer with 5+ years building enterprise-scale ML systems</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </button>
+                    <a href="Syamchand_Chilaka_AI_ML_Data_Scientist_Resume.pdf" download class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                
+                <div class="social-buttons">
+                    <a href="https://github.com/Syamchand-Chilaka" target="_blank" class="icon-btn">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/syamchand-chilaka" target="_blank" class="icon-btn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="tel:+17324768923" class="icon-btn">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="profile-container">
+                    <img id="profileImg" src="profile.jpg" alt="Syamchand Chilaka" class="profile-pic" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <li>Skill 3</li>
-            <!-- Add more skills as necessary -->
-        </ul>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I'm a passionate Data Scientist specializing in Generative AI and Machine Learning.</p>
+                <p>My expertise spans LLMs, RAG systems, deep learning, and production MLOps.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-box">
+                    <h3>80%</h3>
+                    <p>Response Time ↓</p>
+                </div>
+                <div class="stat-box">
+                    <h3>96%</h3>
+                    <p>Accuracy</p>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section class="experience">
-        <h2>Experience</h2>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🤖 ML & AI</h3>
+                <div class="skill-item">
+                    <h4>Generative AI & LLMs</h4>
+                    <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>💻 Programming</h3>
+                <div class="skill-item">
+                    <h4>Python</h4>
+                    <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>⚙️ MLOps & Cloud</h3>
+                <div class="skill-item">
+                    <h4>AWS & Cloud</h4>
+                    <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Professional Experience</h2>
         <div class="timeline">
-            <div class="event">
-                <h4>Job Title 1</h4>
-                <p>Company Name | Dates</p>
-                <p>Description of duties and achievements.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Data Scientist - CitiGroup</h3>
+                    <p style="color: var(--text-light); margin-top: 1rem;">Sep 2023 – Present</p>
+                </div>
             </div>
-            <div class="event">
-                <h4>Job Title 2</h4>
-                <p>Company Name | Dates</p>
-                <p>Description of duties and achievements.</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Data Scientist - Accenture</h3>
+                    <p style="color: var(--text-light); margin-top: 1rem;">Sep 2020 – Jul 2022</p>
+                </div>
             </div>
-            <!-- Add more experience events -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Junior Data Scientist - Accenture</h3>
+                    <p style="color: var(--text-light); margin-top: 1rem;">Aug 2019 – Aug 2020</p>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <section class="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Title 1</h3>
-            <p>Project description.</p>
-            <a href="project-link" target="_blank">View Project</a>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section container">
+        <h2>Let's Connect</h2>
+        <div class="contact-form">
+            <form id="contactForm" onsubmit="sendEmail(event)">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
         </div>
-        <!-- Add more projects -->
     </section>
-    
+
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Syamchand Chilaka. All rights reserved.</p>
     </footer>
+
+    <script>
+        function sendEmail(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const mailtoLink = `mailto:syamchand.chilaka@gmail.com?subject=${encodeURIComponent(`${subject} - From: ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            document.getElementById('contactForm').reset();
+        }
+    </script>
 </body>
 </html>
