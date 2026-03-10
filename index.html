@@ -117,6 +117,7 @@
             width: 200px;
             height: 200px;
             margin: 0 auto 3rem;
+            cursor: pointer;
         }
 
         .hero-image {
@@ -127,11 +128,10 @@
             border: 5px solid var(--primary-color);
             box-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
         }
 
         .hero-image:hover {
@@ -153,17 +153,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            color: white;
         }
 
         .upload-placeholder i {
             font-size: 3rem;
-            color: white;
             margin-bottom: 0.5rem;
         }
 
         .upload-placeholder p {
-            color: white;
             font-size: 0.8rem;
         }
 
@@ -624,18 +622,20 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-image-wrapper">
-                <div class="hero-image" onclick="document.getElementById('profileInput').click()">
-                    <img id="profileImg" src="" alt="Syamchand Chilaka" style="display:none;">
+            <div class="hero-image-wrapper" onclick="document.getElementById('profileInput').click();">
+                <div class="hero-image">
+                    <img id="profileImg" src="" alt="Profile" style="display:none;">
                     <div class="upload-placeholder" id="placeholder">
                         <i class="fas fa-camera"></i>
-                        <p>Click to upload</p>
+                        <p>Click to upload photo</p>
                     </div>
                 </div>
-                <input type="file" id="profileInput" accept="image/*" onchange="handleImageUpload(event)">
             </div>
+            <input type="file" id="profileInput" accept="image/*">
+            
             <h1>Hey 👋, I'm <span class="name-highlight">Syamchand Chilaka</span></h1>
             <p class="subtitle">Data Scientist & AI/ML Engineer</p>
+            
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
                     <i class="fas fa-envelope"></i> Get in Touch
@@ -644,11 +644,12 @@
                     <i class="fas fa-download"></i> Download CV
                 </a>
             </div>
+            
             <div class="social-links">
-                <a href="https://github.com/Syamchand-Chilaka" target="_blank" title="GitHub">
+                <a href="https://github.com/Syamchand-Chilaka" target="_blank" rel="noopener noreferrer" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/chilaka-syamchand/" target="_blank" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/chilaka-syamchand/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
                 <a href="tel:+17324768923" title="Call">
@@ -901,7 +902,8 @@
     </footer>
 
     <script>
-        function handleImageUpload(event) {
+        // Handle profile image upload
+        document.getElementById('profileInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
@@ -915,8 +917,9 @@
                 };
                 reader.readAsDataURL(file);
             }
-        }
+        });
 
+        // Handle email form submission
         function sendEmail(event) {
             event.preventDefault();
             
