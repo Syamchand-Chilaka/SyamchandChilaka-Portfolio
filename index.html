@@ -112,21 +112,63 @@
             align-items: center;
         }
 
-        .hero-image {
+        .hero-image-wrapper {
+            position: relative;
             width: 200px;
             height: 200px;
             margin: 0 auto 3rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             overflow: hidden;
             border: 5px solid var(--primary-color);
             box-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image:hover {
+            box-shadow: 0 0 60px rgba(102, 126, 234, 0.6);
+            transform: scale(1.05);
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        .upload-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .upload-placeholder i {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-placeholder p {
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        #profileInput {
+            display: none;
         }
 
         .hero h1 {
@@ -582,8 +624,15 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-image">
-                <img src="profile.jpg" alt="Syamchand Chilaka">
+            <div class="hero-image-wrapper">
+                <div class="hero-image" onclick="document.getElementById('profileInput').click()">
+                    <img id="profileImg" src="" alt="Syamchand Chilaka" style="display:none;">
+                    <div class="upload-placeholder" id="placeholder">
+                        <i class="fas fa-camera"></i>
+                        <p>Click to upload</p>
+                    </div>
+                </div>
+                <input type="file" id="profileInput" accept="image/*" onchange="handleImageUpload(event)">
             </div>
             <h1>Hey 👋, I'm <span class="name-highlight">Syamchand Chilaka</span></h1>
             <p class="subtitle">Data Scientist & AI/ML Engineer</p>
@@ -599,7 +648,7 @@
                 <a href="https://github.com/Syamchand-Chilaka" target="_blank" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/syamchand-chilaka" target="_blank" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/chilaka-syamchand/" target="_blank" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
                 <a href="tel:+17324768923" title="Call">
@@ -852,6 +901,22 @@
     </footer>
 
     <script>
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImg = document.getElementById('profileImg');
+                    const placeholder = document.getElementById('placeholder');
+                    
+                    profileImg.src = e.target.result;
+                    profileImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function sendEmail(event) {
             event.preventDefault();
             
