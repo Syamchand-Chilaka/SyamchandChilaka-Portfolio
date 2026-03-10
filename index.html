@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syamchand Chilaka - Data Scientist & AI/ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navigation */
+        nav { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.2rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: white; }
+        nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s; }
+        nav a:hover { color: #ffd700; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 20px; text-align: center; min-height: 70vh; display: flex; align-items: center; justify-content: center; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.8rem; margin-bottom: 1rem; }
+        .hero-tagline { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
+        .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 2rem; }
+        .stat { background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); }
+        .stat h3 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .stat p { font-size: 0.9rem; }
+        
+        /* Sections */
+        section { padding: 60px 20px; background: white; margin: 30px auto; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        section h2 { font-size: 2.8rem; margin-bottom: 2.5rem; color: #667eea; border-bottom: 4px solid #667eea; padding-bottom: 1rem; }
+        
+        /* About */
+        .intro { font-size: 1.15rem; line-height: 1.9; margin-bottom: 2rem; color: #555; }
+        .impact-box { background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 2.5rem; border-radius: 15px; margin: 2rem 0; border-left: 5px solid #667eea; }
+        .impact-box h3 { color: #667eea; margin-bottom: 1.5rem; font-size: 1.4rem; }
+        .impact-list { list-style: none; columns: 2; }
+        .impact-list li { padding: 0.8rem 0; padding-left: 1.8rem; position: relative; }
+        .impact-list li:before { content: "✓"; position: absolute; left: 0; color: #667eea; font-weight: bold; }
+        
+        .contact-bar { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #eee; }
+        .contact-bar span { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; color: #667eea; }
+        
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .skill-category h3 { color: #667eea; margin-bottom: 1.3rem; font-size: 1.3rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill-tags span { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.7rem 1.3rem; border-radius: 25px; font-size: 0.9rem; box-shadow: 0 3px 10px rgba(102,126,234,0.2); }
+        .skill-tags span:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(102,126,234,0.4); }
+        
+        /* Timeline */
+        .timeline { position: relative; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); }
+        .timeline-item { margin: 2.5rem 0; margin-left: 40px; padding: 2.5rem; background: linear-gradient(135deg, #f8f9fa 0%, #f0f1ff 100%); border-left: 4px solid #667eea; border-radius: 10px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; width: 15px; height: 15px; background: white; border: 3px solid #667eea; border-radius: 50%; top: 2.5rem; left: -37px; }
+        .timeline-item h3 { color: #667eea; margin-bottom: 0.3rem; font-size: 1.3rem; }
+        .company { font-weight: 700; color: #667eea; }
+        .location { font-size: 0.95rem; color: #999; margin-bottom: 1rem; }
+        .achievements { list-style: none; padding: 0; }
+        .achievements li { padding: 0.6rem 0; padding-left: 1.5rem; position: relative; }
+        .achievements li:before { content: "→"; position: absolute; left: 0; color: #667eea; }
+        
+        /* Education */
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .edu-card { background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 2rem; border-radius: 15px; border-left: 5px solid #667eea; }
+        .edu-card h3 { color: #667eea; margin-bottom: 0.8rem; }
+        .school { color: #666; font-weight: 500; }
+        
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .project-card { background: white; border: 1px solid #e0e0e0; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; overflow: hidden; }
+        .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(102,126,234,0.25); }
+        .project-header h3 { color: #667eea; margin: 0 0 0.5rem 0; font-size: 1.35rem; }
+        .project-company { color: #999; font-size: 0.9rem; }
+        .project-desc { margin: 1.2rem 0; color: #666; line-height: 1.7; }
+        .project-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 1.8rem 0; padding: 1.8rem; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; }
+        .metric { text-align: center; }
+        .metric-value { display: block; font-size: 1.8rem; font-weight: 700; color: #667eea; margin-bottom: 0.3rem; }
+        .metric-label { display: block; font-size: 0.85rem; color: #666; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
+        .project-tech span { background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%); color: #667eea; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; }
+        .project-highlights { list-style: none; padding: 0; }
+        .project-highlights li { padding: 0.5rem 0; padding-left: 1.3rem; position: relative; font-size: 0.95rem; color: #666; }
+        .project-highlights li:before { content: "•"; position: absolute; left: 0; color: #667eea; }
+        
+        /* Contact */
+        #contact { text-align: center; }
+        .contact-intro { font-size: 1.2rem; color: #666; margin-bottom: 2.5rem; }
+        .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2rem; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 15px; text-decoration: none; border: 1px solid #667eea30; }
+        .contact-item:hover { background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%); transform: translateY(-5px); }
+        .contact-item i { font-size: 2.5rem; color: #667eea; }
+        .contact-item h4 { color: #333; margin: 0; font-size: 1rem; }
+        .contact-item p { color: #667eea; margin: 0; font-size: 0.9rem; font-weight: 500; }
+        
+        /* Footer */
+        footer { background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); color: white; text-align: center; padding: 2.5rem; margin-top: 4rem; }
+        .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { color: white; font-size: 1.5rem; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); transition: all 0.3s; text-decoration: none; }
+        .social-links a:hover { background: #667eea; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { gap: 1rem; font-size: 0.9rem; }
+            .hero { padding: 50px 20px; min-height: 50vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            section { padding: 40px 20px; }
+            section h2 { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .project-metrics { grid-template-columns: 1fr; }
+            .contact-info { grid-template-columns: 1fr; }
+            .impact-list { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">SC</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Syamchand Chilaka</h1>
+            <p class="hero-subtitle">Data Scientist & AI/ML Engineer</p>
+            <p class="hero-tagline">Building enterprise-scale ML systems with Generative AI, LLMs, and production-ready models</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat">
+                    <h3>80%</h3>
+                    <p>Response Time ↓</p>
+                </div>
+                <div class="stat">
+                    <h3>40%</h3>
+                    <p>False Positives ↓</p>
+                </div>
+                <div class="stat">
+                    <h3>96%</h3>
+                    <p>Model Accuracy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p class="intro">Data Scientist (AI & ML Focus) with 5+ years building enterprise-scale ML systems in finance and consulting. Specialized in Generative AI (LLMs, RAG, LangChain), NLP, and deep learning.</p>
+        
+        <div class="impact-box">
+            <h3>💼 Business Impact</h3>
+            <ul class="impact-list">
+                <li><strong>80% faster</strong> customer response times via AI chatbots</li>
+                <li><strong>40% fewer</strong> false positives in fraud detection</li>
+                <li><strong>20% higher</strong> CTR in recommendation systems</li>
+                <li><strong>30% faster</strong> model training with distributed computing</li>
+                <li><strong>25% reduction</strong> in model review cycles</li>
+                <li><strong>96% accuracy</strong> in production anomaly detection</li>
+            </ul>
+        </div>
+
+        <div class="contact-bar">
+            <span><i class="fas fa-envelope"></i> syamchand.chilaka@gmail.com</span>
+            <span><i class="fas fa-phone"></i> +1 (732) 476-8923</span>
+            <span><i class="fas fa-map-marker"></i> Jersey City, NJ</span>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>💻 Programming & Tools</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>R</span>
+                    <span>Java</span>
+                    <span>SQL</span>
+                    <span>Scala</span>
+                    <span>Bash</span>
+                    <span>Git</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🤖 ML & AI</h3>
+                <div class="skill-tags">
+                    <span>Generative AI</span>
+                    <span>LLMs</span>
+                    <span>LangChain</span>
+                    <span>RAG</span>
+                    <span>NLP</span>
+                    <span>Deep Learning</span>
+                    <span>XGBoost</span>
+                    <span>Anomaly Detection</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🧩 Frameworks</h3>
+                <div class="skill-tags">
+                    <span>PyTorch</span>
+                    <span>TensorFlow</span>
+                    <span>Hugging Face</span>
+                    <span>Keras</span>
+                    <span>OpenCV</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>⚙️ MLOps & Deployment</h3>
+                <div class="skill-tags">
+                    <span>MLflow</span>
+                    <span>Airflow</span>
+                    <span>AWS SageMaker</span>
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                    <span>Jenkins</span>
+                    <span>FastAPI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>📊 Big Data & Cloud</h3>
+                <div class="skill-tags">
+                    <span>Spark</span>
+                    <span>Databricks</span>
+                    <span>Delta Lake</span>
+                    <span>AWS</span>
+                    <span>Azure</span>
+                    <span>GCP</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>📈 Visualization & BI</h3>
+                <div class="skill-tags">
+                    <span>Tableau</span>
+                    <span>Power BI</span>
+                    <span>Looker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="container">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Data Scientist</h3>
+                <p class="company">CitiGroup</p>
+                <p class="location">New Jersey | Sep 2023 – Present</p>
+                <ul class="achievements">
+                    <li>Developed <strong>Generative AI chatbot</strong> (Hugging Face + LangChain), cutting response times by <strong>80%</strong></li>
+                    <li>Built <strong>RAG pipelines</strong> with vector DBs, improving accuracy by <strong>50%</strong></li>
+                    <li>Automated workflows using <strong>MLflow + Airflow</strong>, reducing turnaround by <strong>20%</strong></li>
+                    <li>Designed production monitoring dashboards (Tableau + CloudWatch)</li>
+                    <li>Embedded explainability frameworks into LLM solutions</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Data Scientist</h3>
+                <p class="company">Accenture</p>
+                <p class="location">India | Sep 2020 – Jul 2022</p>
+                <ul class="achievements">
+                    <li>Built <strong>96% accurate</strong> anomaly detection model (XGBoost), reducing false positives by <strong>40%</strong></li>
+                    <li>Created <strong>NLP recommendation system</strong>, boosting CTR by <strong>20%</strong></li>
+                    <li>Automated ML workflows with <strong>AWS SageMaker + MLflow</strong></li>
+                    <li>Accelerated training by <strong>30%</strong> using Databricks (PyTorch + Spark)</li>
+                    <li>Mentored 3 junior data scientists</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Junior Data Scientist</h3>
+                <p class="company">Accenture</p>
+                <p class="location">India | Aug 2019 – Aug 2020</p>
+                <ul class="achievements">
+                    <li>Engineered predictive models achieving <strong>72% accuracy</strong></li>
+                    <li>Automated <strong>SQL + Python ETL pipelines</strong>, cutting prep time by <strong>20%</strong></li>
+                    <li>Developed <strong>CNN defect detection</strong> with <strong>95% accuracy</strong></li>
+                    <li>Designed A/B testing frameworks improving conversions by <strong>20%</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="container">
+        <h2>Education</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <h3>Master of Science in Computer and Information Science</h3>
+                <p class="school">Long Island University, Brooklyn, NY</p>
+            </div>
+            <div class="edu-card">
+                <h3>Bachelor of Technology in Computer Science</h3>
+                <p class="school">REVA University, Karnataka, India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>AI-Powered Customer Support Chatbot</h3>
+                    <p class="project-company">CitiGroup</p>
+                </div>
+                <p class="project-desc">Designed and deployed a LangChain + Hugging Face LLM chatbot for financial queries.</p>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">80%</span>
+                        <span class="metric-label">Faster Response</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">50%</span>
+                        <span class="metric-label">Better Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">20%</span>
+                        <span class="metric-label">Less Turnaround</span>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span>LangChain</span>
+                    <span>Hugging Face</span>
+                    <span>RAG</span>
+                    <span>MLflow</span>
+                </div>
+                <ul class="project-highlights">
+                    <li>Integrated RAG pipelines with vector databases</li>
+                    <li>Automated model retraining with MLflow + Airflow</li>
+                    <li>Production monitoring with Tableau</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>ML Platform for Risk & Recommendations</h3>
+                    <p class="project-company">Accenture</p>
+                </div>
+                <p class="project-desc">Built comprehensive ML platform combining NLP recommendations and real-time anomaly detection.</p>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">96%</span>
+                        <span class="metric-label">Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">40%</span>
+                        <span class="metric-label">FP Reduction</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">20%</span>
+                        <span class="metric-label">CTR Lift</span>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span>XGBoost</span>
+                    <span>NLP</span>
+                    <span>FastAPI</span>
+                    <span>AWS</span>
+                </div>
+                <ul class="project-highlights">
+                    <li>96% anomaly detection accuracy as API</li>
+                    <li>NLP recommendation engine with 20% CTR lift</li>
+                    <li>30% faster training via Databricks</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>CNN-Based Edge Defect Detection</h3>
+                    <p class="project-company">Accenture</p>
+                </div>
+                <p class="project-desc">Computer vision defect detection deployed at the edge for manufacturing quality control.</p>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">95%</span>
+                        <span class="metric-label">Accuracy</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Real-time</span>
+                        <span class="metric-label">Inference</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Edge</span>
+                        <span class="metric-label">Deployed</span>
+                    </div>
+                </div>
+                <div class="project-tech">
+                    <span>CNN</span>
+                    <span>OpenCV</span>
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                </div>
+                <ul class="project-highlights">
+                    <li>95% accuracy on real-world defects</li>
+                    <li>Deployed with Docker & Kubernetes</li>
+                    <li>Real-time edge inference</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container">
+        <h2>Let's Connect</h2>
+        <p class="contact-intro">Interested in discussing opportunities in Data Science and AI/ML Engineering.</p>
+        <div class="contact-info">
+            <a href="mailto:syamchand.chilaka@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <p>syamchand.chilaka@gmail.com</p>
+            </a>
+            <a href="tel:+17324768923" class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h4>Phone</h4>
+                <p>+1 (732) 476-8923</p>
+            </a>
+            <a href="https://linkedin.com/in/syamchand-chilaka" target="_blank" class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <h4>LinkedIn</h4>
+                <p>Connect</p>
+            </a>
+            <a href="https://github.com/Syamchand-Chilaka" target="_blank" class="contact-item">
+                <i class="fab fa-github"></i>
+                <h4>GitHub</h4>
+                <p>View Repos</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Syamchand Chilaka. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/syamchand-chilaka" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Syamchand-Chilaka" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:syamchand.chilaka@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
