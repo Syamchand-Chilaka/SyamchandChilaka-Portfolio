@@ -117,7 +117,6 @@
             width: 220px;
             height: 220px;
             margin: 0 auto 3rem;
-            cursor: pointer;
         }
 
         .hero-image {
@@ -147,29 +146,6 @@
             display: block;
             transform: scale(1.15);
             transform-origin: center top;
-        }
-
-        .upload-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .upload-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-placeholder p {
-            font-size: 0.8rem;
-        }
-
-        #profileInput {
-            display: none;
         }
 
         .hero h1 {
@@ -333,46 +309,53 @@
         }
 
         .skill-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(102, 126, 234, 0.15);
-            transition: all 0.3s;
+            background: rgba(102, 126, 234, 0.07);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 24px rgba(102, 126, 234, 0.07);
         }
 
         .skill-card:hover {
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.45);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(102, 126, 234, 0.18);
         }
 
         .skill-card h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
         }
 
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
+        .skill-tags {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .progress-bar {
-            background: rgba(255, 255, 255, 0.1);
-            height: 6px;
-            border-radius: 3px;
-            overflow: hidden;
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.18), rgba(118, 75, 162, 0.18));
+            color: var(--light-text);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.25s ease;
+            cursor: default;
         }
 
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 3px;
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.35), rgba(118, 75, 162, 0.35));
+            border-color: rgba(102, 126, 234, 0.6);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
         }
 
         /* Experience Section */
@@ -537,6 +520,14 @@
             border-radius: 20px;
             font-size: 0.8rem;
             border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.35), rgba(118, 75, 162, 0.35));
+            border-color: rgba(102, 126, 234, 0.55);
+            transform: translateY(-2px);
         }
 
         /* Contact Section */
@@ -653,16 +644,11 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-image-wrapper" onclick="document.getElementById('profileInput').click();">
+            <div class="hero-image-wrapper">
                 <div class="hero-image">
-                    <img id="profileImg" src="profile.jpeg" alt="Syamchand Chilaka" style="display:block;">
-                    <div class="upload-placeholder" id="placeholder" style="display:none;">
-                        <i class="fas fa-camera"></i>
-                        <p>Click to upload photo</p>
-                    </div>
+                    <img id="profileImg" src="profile.jpeg" alt="Syamchand Chilaka">
                 </div>
             </div>
-            <input type="file" id="profileInput" accept="image/*">
             
             <h1>Hey 👋, I'm <span class="name-highlight">Syamchand Chilaka</span></h1>
             <p class="subtitle">Data Scientist & AI/ML Engineer</p>
@@ -723,77 +709,87 @@
             <h2>Skills & Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>🤖 ML & AI</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Generative AI & LLMs</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Deep Learning</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>NLP & Transformers</span>
-                            <span>92%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 92%;"></div></div>
+                    <h3>💻 Programming &amp; Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Scala</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Git</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
-                    <h3>💻 Programming</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SQL & Databases</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>R & Scala</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    <h3>🤖 ML &amp; AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">LLMs (BERT, GPT-3, LLaMA)</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">CNNs/RNNs/LSTMs</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Recommender Systems</span>
+                        <span class="skill-tag">Anomaly &amp; Fraud Detection</span>
+                        <span class="skill-tag">Reinforcement Learning</span>
                     </div>
                 </div>
 
                 <div class="skill-card">
-                    <h3>⚙️ MLOps & Cloud</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>AWS & Cloud</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
+                    <h3>⚙️ Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">OpenCV</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Docker & Kubernetes</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🚀 MLOps &amp; Deployment</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">Airflow</span>
+                        <span class="skill-tag">AWS SageMaker</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Model Monitoring &amp; Drift Detection</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>MLflow & Airflow</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>📦 Big Data &amp; Pipelines</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spark (PySpark, MLlib)</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Delta Lake</span>
+                        <span class="skill-tag">dbt</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>☁️ Cloud Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (S3, RDS, EC2, Lambda, Bedrock)</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">GCP BigQuery</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>📊 Visualization &amp; BI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Looker</span>
                     </div>
                 </div>
             </div>
@@ -823,7 +819,7 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Data Scientist</h3>
+                        <h3>Data Scientist II</h3>
                         <p class="company">Accenture</p>
                         <p class="duration">India | Sep 2020 – Jul 2022</p>
                         <ul>
@@ -956,23 +952,6 @@
     </footer>
 
     <script>
-        // Handle profile image upload
-        document.getElementById('profileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const profileImg = document.getElementById('profileImg');
-                    const placeholder = document.getElementById('placeholder');
-                    
-                    profileImg.src = e.target.result;
-                    profileImg.style.display = 'block';
-                    placeholder.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
         // Handle email form submission
         function sendEmail(event) {
             event.preventDefault();
