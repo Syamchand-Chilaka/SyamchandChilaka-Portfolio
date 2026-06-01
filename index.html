@@ -232,6 +232,19 @@
             transform: scale(1.25);
             transform-origin: center 30%;
         }
+        .hero-photo-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(100, 255, 218, 0.05);
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 96px;
+            font-weight: 500;
+            color: var(--accent);
+            user-select: none;
+        }
 
         .btn {
             font-family: var(--font-mono);
@@ -505,6 +518,7 @@
             .hero-photo-frame:hover {
                 box-shadow: 0 0 40px rgba(100, 255, 218, 0.08);
             }
+            .hero-photo-fallback { font-size: 48px; }
             .hero h1 { font-size: 40px; }
             .hero h2 { font-size: 18px; }
             .section-heading { font-size: 24px; }
@@ -548,7 +562,8 @@
             </div>
             <div class="hero-photo">
                 <div class="hero-photo-frame">
-                    <img src="profile.jpeg" alt="Syamchand Chilaka">
+                    <img src="profile.jpeg" alt="Syamchand Chilaka" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <div class="hero-photo-fallback">SC</div>
                 </div>
             </div>
         </div>
