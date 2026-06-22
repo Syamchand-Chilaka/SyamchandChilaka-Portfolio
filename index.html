@@ -258,28 +258,25 @@
         /* ---------- Skills ---------- */
         .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px 48px;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .skill-cat {
+            display: flex;
+            flex-direction: column;
         }
         .skill-cat h3 {
             font-family: var(--font-sans);
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             color: var(--accent);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--text-muted);
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 3px;
-            padding: 6px 12px;
-            transition: border-color 250ms ease, color 250ms ease;
+        .skill-cat p {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.6;
         }
-        .tag:hover { border-color: var(--border-hover); color: var(--accent); }
 
         /* ---------- Experience ---------- */
         .exp-list { display: flex; flex-direction: column; gap: 48px; }
@@ -376,47 +373,37 @@
         /* ---------- Projects ---------- */
         .projects-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 24px;
         }
-        .project-card {
-            border: 1px solid var(--border);
-            border-radius: 3px;
-            padding: 32px;
-            background: var(--bg-elevated);
-            display: flex;
-            flex-direction: column;
-            transition: transform 250ms ease, border-color 250ms ease;
+        .project-item {
+            border-left: 1px solid var(--border);
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 24px;
         }
-        .project-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-        .project-label {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            color: var(--accent);
-            margin-bottom: 12px;
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--accent);
         }
-        .project-card h3 {
+        .project-title {
             font-family: var(--font-sans);
             font-weight: 600;
-            font-size: 22px;
+            font-size: 18px;
             color: var(--text-primary);
-            line-height: 1.25;
-            margin-bottom: 6px;
-        }
-        .project-company {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
         .project-desc {
             font-size: 15px;
             color: var(--text-body);
             line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
         }
-        .project-card .tags { margin-top: auto; }
 
         /* ---------- Contact ---------- */
         .contact { text-align: center; }
@@ -468,8 +455,7 @@
 
         /* ---------- Responsive ---------- */
         @media (max-width: 1024px) {
-            .skills-grid, .edu-grid, .cert-grid, .projects-grid { grid-template-columns: 1fr; }
-            .projects-grid { gap: 20px; }
+            .edu-grid { grid-template-columns: 1fr; }
             .hero-grid { grid-template-columns: 1fr; gap: 0; }
             .hero-photo { order: -1; margin-bottom: 48px; justify-content: flex-start; }
         }
@@ -542,7 +528,7 @@
                 <p class="eyebrow">Hi, my name is</p>
                 <h1>Syamchand Chilaka</h1>
                 <h2>I build AI systems that ship.</h2>
-                <p>AI / ML Engineer with 5+ years shipping production Generative AI and machine learning systems in financial services and consulting. At Citi, built an LLM chatbot on Hugging Face and LangChain that cut customer response times by 80%, and RAG pipelines that lifted document classification accuracy by 50% on financial text. At Accenture, deployed an XGBoost anomaly detection model at 96% accuracy that reduced false positives by 40% in risk monitoring, and an NLP recommender that lifted click through rate by 20% across SaaS campaigns.</p>
+                <p>Senior AI/ML Engineer and Data Scientist with 5+ years of experience building and scaling production GenAI and machine learning systems in financial services and consulting. Proven track record deploying RAG architectures, distributed training/inference infrastructure, and enterprise AI tools across highly regulated environments.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-filled">Get in touch</a>
                     <a href="syamchand_chilaka_DS_AI_ML_Engineer.pdf" download class="btn btn-outline">Download Resume</a>
@@ -562,7 +548,7 @@
         <div class="container">
             <h2 class="section-heading">About</h2>
             <div class="about-text">
-                <p>AI / ML Engineer with 5+ years shipping production Generative AI and machine learning systems in financial services and consulting. At Citi, built an LLM chatbot on Hugging Face and LangChain that cut customer response times by 80%, and RAG pipelines that lifted document classification accuracy by 50% on financial text. At Accenture, deployed an XGBoost anomaly detection model at 96% accuracy that reduced false positives by 40% in risk monitoring, and an NLP recommender that lifted click through rate by 20% across SaaS campaigns. Now targeting senior AI / ML engineering roles centered on LLMs, RAG, and applied Generative AI.</p>
+                <p>Senior AI/ML Engineer and Data Scientist with 5+ years of experience building and scaling production GenAI and machine learning systems in financial services and consulting. Proven track record deploying RAG architectures, distributed training/inference infrastructure, and enterprise AI tools across highly regulated environments. Specialized in managing engineering trade-offs between computational throughput, inference latency, and enterprise compliance constraints.</p>
             </div>
         </div>
     </section>
@@ -573,84 +559,24 @@
             <h2 class="section-heading">Skills</h2>
             <div class="skills-grid">
                 <div class="skill-cat">
-                    <h3>Generative AI & NLP</h3>
-                    <div class="tags">
-                        <span class="tag">LLMs (BERT, GPT-3, LLaMA)</span>
-                        <span class="tag">Retrieval-Augmented Generation (RAG)</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Hugging Face</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">Vector Databases</span>
-                        <span class="tag">Embeddings</span>
-                    </div>
+                    <h3>GenAI & Inference:</h3>
+                    <p>LLM apps (LLaMA, BERT), RAG, multi-agent workflows, LangGraph/LlamaIndex, vLLM, TensorRT-LLM, vector DBs (Pinecone, Qdrant, pgvector), tool/function calling.</p>
                 </div>
                 <div class="skill-cat">
-                    <h3>Machine Learning</h3>
-                    <div class="tags">
-                        <span class="tag">XGBoost</span>
-                        <span class="tag">Recommender Systems</span>
-                        <span class="tag">Anomaly & Fraud Detection</span>
-                        <span class="tag">Reinforcement Learning</span>
-                        <span class="tag">A/B Testing</span>
-                        <span class="tag">Deep Learning (CNNs, RNNs, LSTMs)</span>
-                        <span class="tag">Computer Vision</span>
-                    </div>
+                    <h3>ML & Vision:</h3>
+                    <p>PyTorch, Hugging Face, XGBoost, CNNs, anomaly detection, recommender systems, OpenCV, A/B testing.</p>
                 </div>
                 <div class="skill-cat">
-                    <h3>Frameworks</h3>
-                    <div class="tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Keras</span>
-                        <span class="tag">OpenCV</span>
-                    </div>
+                    <h3>Data & Compute:</h3>
+                    <p>Databricks, Apache Spark (PySpark), Ray, feature stores, SQL, AWS (EKS, EC2, S3), Docker, Kubernetes.</p>
                 </div>
                 <div class="skill-cat">
-                    <h3>Languages</h3>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">R</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">Scala</span>
-                        <span class="tag">Bash</span>
-                        <span class="tag">Git</span>
-                    </div>
+                    <h3>MLOps & Monitoring:</h3>
+                    <p>MLflow, Airflow, Jenkins CI/CD, Prometheus, Grafana, LlamaGuard.</p>
                 </div>
                 <div class="skill-cat">
-                    <h3>MLOps & Deployment</h3>
-                    <div class="tags">
-                        <span class="tag">MLflow</span>
-                        <span class="tag">Airflow</span>
-                        <span class="tag">AWS SageMaker</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Jenkins</span>
-                        <span class="tag">CI/CD</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Model Monitoring</span>
-                        <span class="tag">Drift Detection</span>
-                    </div>
-                </div>
-                <div class="skill-cat">
-                    <h3>Cloud & Big Data</h3>
-                    <div class="tags">
-                        <span class="tag">AWS (S3, RDS, EC2, Lambda, Bedrock, SageMaker)</span>
-                        <span class="tag">Azure</span>
-                        <span class="tag">GCP BigQuery</span>
-                        <span class="tag">Spark (PySpark, MLlib)</span>
-                        <span class="tag">Databricks</span>
-                        <span class="tag">Delta Lake</span>
-                        <span class="tag">dbt</span>
-                    </div>
-                </div>
-                <div class="skill-cat">
-                    <h3>Visualization & BI</h3>
-                    <div class="tags">
-                        <span class="tag">Tableau</span>
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Looker</span>
-                    </div>
+                    <h3>Languages:</h3>
+                    <p>Python, Java, Bash.</p>
                 </div>
             </div>
         </div>
@@ -662,37 +588,37 @@
             <h2 class="section-heading">Experience</h2>
             <div class="exp-list">
                 <div class="exp-item">
-                    <div class="exp-role">Data Scientist <span class="at">@ Citi</span></div>
-                    <div class="exp-meta">New Jersey · Sep 2023 – Present</div>
+                    <div class="exp-role">Data Scientist / AI Engineer <span class="at">@ Citi</span></div>
+                    <div class="exp-meta">New Jersey · Jan 2024 – Present</div>
                     <ul class="exp-bullets">
-                        <li>Designed and deployed a Generative AI chatbot on Hugging Face Transformers and LangChain, cutting customer response times by 80%.</li>
-                        <li>Built retrieval-augmented generation (RAG) pipelines with vector databases and feature engineering on financial text, improving document classification accuracy by 50%.</li>
-                        <li>Automated model retraining and data preparation workflows with MLflow and Airflow, reducing turnaround time by 20%.</li>
-                        <li>Designed production monitoring dashboards in Tableau and CloudWatch, tracking drift, latency, and uptime of AI models in production.</li>
-                        <li>Partnered with compliance teams to embed explainability frameworks into LLM solutions, supporting audit and governance reviews.</li>
-                        <li>Optimized SQL queries and maintained data pipelines, reducing data preparation time for ML models by 20%.</li>
-                        <li>Presented ML strategy and results to senior leadership, informing prioritization of AI infrastructure investment.</li>
+                        <li>Infrastructure Optimization: Led the design and deployment of a vLLM- and TensorRT-LLM-based inference stack for internal LLM workloads, optimizing KV-cache utilization via semantic prompt caching to reduce p95 latency by 180 ms and monthly token spend by 40%.</li>
+                        <li>Agentic System Design: Partnered with internal operations and product teams to build a stateful multi-agent routing workflow using OpenAI and Anthropic function calling, resolving manual triage bottlenecks and reducing operational triage volume by 35%.</li>
+                        <li>Enterprise RAG Scale: Designed and implemented a production RAG pipeline over a 10M+ multi-format financial document corpus using semantic chunking and Cross‑Encoder reranking, improving automated retrieval precision by 26%.</li>
+                        <li>Distributed Fine‑Tuning: Deployed distributed fine-tuning pipelines (PEFT/LoRA) for open-weights models (LLaMA, Mistral) using Ray on AWS compute clusters, adapting models to domain-specific terminology under strict financial compliance constraints.</li>
+                        <li>LLMOps & Observability: Built and deployed centralized LLM observability pipelines using Prometheus, Grafana, and LlamaGuard to actively monitor latency, data drift, and safety signals across live production workflows.</li>
+                        <li>Technical Leadership: Led a sub-team of engineers to build and deploy stateful LangGraph multi-agent routing workflows, partnering with infrastructure and product teams to safely scale high-concurrency internal financial operations.</li>
                     </ul>
                 </div>
                 <div class="exp-item">
-                    <div class="exp-role">Data Scientist II <span class="at">@ Accenture</span></div>
+                    <div class="exp-role">Data Scientist II / Machine Learning Engineer <span class="at">@ Accenture</span></div>
                     <div class="exp-meta">India · Sep 2020 – Jul 2022</div>
                     <ul class="exp-bullets">
-                        <li>Built and deployed an XGBoost anomaly detection model at 96% accuracy as an API microservice, reducing false positives by 40% in financial risk monitoring.</li>
-                        <li>Created an NLP based recommendation engine using embeddings and feature engineering, lifting click through rate by 20% for SaaS marketing campaigns.</li>
-                        <li>Applied KMeans clustering to identify distinct customer segments, enhancing targeted marketing campaigns by 25%.</li>
-                        <li>Accelerated distributed training by 30% on Databricks with PyTorch and Spark, and automated ML workflows on AWS SageMaker with MLflow tracking and Jenkins based CI/CD pipelines for reproducibility.</li>
-                        <li>Embedded explainability frameworks with compliance teams reducing model review cycles by 25%, and mentored 3 junior data scientists on MLOps and feature engineering.</li>
+                        <li>Edge Vision Frameworks: Designed and deployed edge-based CNN anomaly and defect detection frameworks for industrial client systems, achieving a 95% classification accuracy on active production lines.</li>
+                        <li>Distributed Systems Compute: Built distributed data processing and inference pipelines on Databricks and Apache Spark, accelerating data preprocessing execution speeds by 30% for multi-terabyte enterprise datasets.</li>
+                        <li>Core Predictive Modeling: Developed predictive machine learning systems and deep ranking models utilizing gradient boosting (XGBoost) and vector embeddings, driving a 22% lift in user engagement and a 20% increase in click-through rates.</li>
+                        <li>Cross-Functional Delivery: Partnered with corporate stakeholders and product leads to translate ambiguous business bottlenecks into production-ready ML microservices, shortening evaluation-to-deployment cycles by 25%.</li>
+                        <li>Engineering Mentorship: Led an engineering squad to design and productionize distributed training pipelines on Databricks, establishing standardized code reviews and mentoring junior developers to cut client model-deployment cycles by 25%.</li>
+                        <li>Production MLOps: Implemented containerized model deployments using Docker and Kubernetes (EKS), establishing automated Jenkins CI/CD pipelines for post-deployment performance tracking and drift monitoring.</li>
                     </ul>
                 </div>
                 <div class="exp-item">
                     <div class="exp-role">Junior Data Scientist <span class="at">@ Accenture</span></div>
-                    <div class="exp-meta">India · Aug 2019 – Aug 2020</div>
+                    <div class="exp-meta">India · Jan 2020 – Aug 2020</div>
                     <ul class="exp-bullets">
-                        <li>Engineered predictive models (Decision Trees, Random Forests, XGBoost) with advanced feature engineering, achieving 72% accuracy in customer response prediction.</li>
-                        <li>Developed a computer vision defect detection model (CNNs) deployed at the edge with 95% accuracy.</li>
-                        <li>Designed and executed A/B testing frameworks in Python, improving conversions by 20%, and automated SQL and Python ETL pipelines cutting ML data preparation time by 20%.</li>
-                        <li>Automated CI/CD pipelines with Git and Jenkins on Azure (Docker and Kubernetes), reducing build and deployment times for big data projects by 15%.</li>
+                        <li>Predictive Analytics: Engineered predictive modeling pipelines (Decision Trees, Random Forests, XGBoost) with advanced feature engineering, achieving 72% accuracy in customer response classification.</li>
+                        <li>Computer Vision Deployments: Built a computer vision defect detection model (CNNs) deployed at the edge with 95% accuracy.</li>
+                        <li>Statistical Optimization: Designed and executed A/B testing frameworks in Python to optimize conversion metrics by 20%, while automating SQL and Python ETL pipelines to cut data preparation time by 20%.</li>
+                        <li>CI/CD Automation: Automated CI/CD pipelines with Git and Jenkins on Azure container environments, reducing deployment cycle times by 15%.</li>
                     </ul>
                 </div>
             </div>
@@ -721,10 +647,10 @@
         <div class="container">
             <h2 class="section-heading">Certifications</h2>
             <div class="cert-grid">
+                <div class="cert-item">Certified Artificial Intelligence Governance Professional (IAPP AIGP)</div>
                 <div class="cert-item">Model Validation 1 (Trainer)</div>
-                <div class="cert-item">Model Validation 2 (Expert )</div>
-                <div class="cert-item">Microsoft Certified: Azure Fundamentals</div>
-                <div class="cert-item">Object Oriented Programming in Java</div>
+                <div class="cert-item">Model Validation 2 (Expert)</div>
+                <div class="cert-item">Microsoft Responsible AI Certification</div>
             </div>
         </div>
     </section>
@@ -734,32 +660,15 @@
         <div class="container">
             <h2 class="section-heading">Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-label">Project</div>
-                    <h3>Enterprise Financial RAG & Low-Latency Inference Gateway</h3>
-                    <div class="project-company">Citi</div>
-                    <p class="project-desc">vLLM and TensorRT-LLM inference infrastructure with semantic prompt caching, reducing p95 API latency by 180 ms and monthly token spend by 40%; built stateful LangGraph multi-agent routing workflows handling 50K+ weekly operational requests to cut manual triage by 35%; architected layout-aware RAG pipelines over a 10M+ document corpus with Cross-Encoder reranking, boosting retrieval precision by 26%.</p>
+                <div class="project-item">
+                    <div class="project-title">Project Axis - AI Red Teaming & Evaluation</div>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">Handshake AI x Stanford HAI</p>
+                    <div class="project-desc">Task Author on a Stanford HAI research initiative evaluating frontier AI models; designed PhD-level reasoning questions grounded in recent arXiv papers to expose traceable failure modes, built gold-standard solutions with step-by-step calculations, and diagnosed reasoning errors across multiple frontier models through an automated evaluation pipeline.</div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-label">Project</div>
-                    <h3>Multi-Terabyte Distributed Predictive Analytics & MLOps Infrastructure</h3>
-                    <div class="project-company">Accenture</div>
-                    <p class="project-desc">Distributed training and data preprocessing pipelines built with PySpark on Databricks, accelerating execution speeds by 30% across multi-terabyte datasets; deployed predictive recommendation and deep ranking systems (XGBoost + embeddings) lifting user engagement by 22% and CTR by 20%; integrated containerized microservices via Docker, Kubernetes, and Jenkins CI/CD to shorten model deployment cycles by 25%.</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-label">Project</div>
-                    <h3>Software Engineering Fellow - Project Helix</h3>
-                    <div class="project-company">Handshake AI</div>
-                    <p class="project-desc">Contributed to training and evaluation of LLM coding assistants by authoring high-quality code samples, reviewing model-generated solutions across Python, SQL, and ML workflows, and providing structured feedback to improve code generation, reasoning, and debugging behavior.</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-label">Project</div>
-                    <h3>Project Axis - AI Red Teaming and Evaluation</h3>
-                    <div class="project-company">Handshake AI x Stanford HAI</div>
-                    <p class="project-desc">Task Author on a Stanford HAI research initiative evaluating frontier AI models; designed PhD-level reasoning questions grounded in recent arXiv papers to expose traceable failure modes, built gold-standard solutions with step-by-step calculations, and diagnosed reasoning errors across multiple frontier models through an automated evaluation pipeline; work supported AI safety in healthcare, legal, hiring, and education applications.</p>
+                <div class="project-item">
+                    <div class="project-title">Project Helix - Software Engineering Fellow</div>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">Handshake AI</p>
+                    <div class="project-desc">Contributed to the training and evaluation of LLM coding assistants by authoring high-quality code samples, reviewing model-generated solutions across Python, SQL, and ML workflows, and providing structured feedback to improve code generation, reasoning, and debugging behavior.</div>
                 </div>
             </div>
         </div>
