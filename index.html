@@ -515,6 +515,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#artifacts">Artifacts</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="Syamchand_Chilaka_Resume.pdf" download class="nav-cta">Resume</a></li>
             </ul>
@@ -549,6 +550,7 @@
             <h2 class="section-heading">About</h2>
             <div class="about-text">
                 <p>Senior AI/ML Engineer and Data Scientist with 5+ years of experience building and scaling production GenAI and machine learning systems in financial services and consulting. Proven track record deploying RAG architectures, distributed training/inference infrastructure, and enterprise AI tools across highly regulated environments. Specialized in managing engineering trade-offs between computational throughput, inference latency, and enterprise compliance constraints.</p>
+                <p style="margin-top: 18px;"><strong>My Value Proposition:</strong> I turn AI from a buzzword into working, trustworthy systems. With a journey from mechanical engineering to robotics to production AI/ML in financial services, I build intelligent solutions that are grounded, governed, and genuinely useful, and I help teams adopt them with confidence.</p>
             </div>
         </div>
     </section>
@@ -669,6 +671,34 @@
                     <div class="project-title">Project Helix - Software Engineering Fellow</div>
                     <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">Handshake AI</p>
                     <div class="project-desc">Contributed to the training and evaluation of LLM coding assistants by authoring high-quality code samples, reviewing model-generated solutions across Python, SQL, and ML workflows, and providing structured feedback to improve code generation, reasoning, and debugging behavior.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Artifacts (IWU MS in AI coursework) -->
+    <section id="artifacts" data-reveal>
+        <div class="container">
+            <h2 class="section-heading">Portfolio Artifacts</h2>
+            <p style="color: var(--text-muted); margin-bottom: 28px; font-size: 15px;">Artifacts created during my M.S. in Artificial Intelligence coursework at Indiana Wesleyan University, presented as evidence of applied skills.</p>
+            <div class="exp-item">
+                <div class="exp-role">Artifact 1: ML Study Buddy — A RAG-Based AI Study Assistant</div>
+                <div class="exp-meta">AIML-500 Machine Learning Fundamentals · October 2026</div>
+                <p style="margin: 16px 0 10px;">
+                    <a href="https://ml-study-buddy.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn btn-filled" style="margin-right: 10px;">Try it live</a>
+                    <a href="https://github.com/Syamchand-Chilaka/ml-study-buddy" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Source code</a>
+                </p>
+                <img src="artifact-ml-study-buddy.png" alt="ML Study Buddy chatbot answering a machine learning question with source citations" style="width: 100%; max-width: 760px; border-radius: 8px; margin: 14px 0 22px; border: 1px solid rgba(100,255,218,0.15);" onerror="this.style.display='none';">
+                <div style="font-size: 15px; line-height: 1.7;">
+                    <p style="margin-bottom: 12px;"><strong>Introduction:</strong> ML Study Buddy is a live, publicly deployed AI chatbot I designed and built during my AIML-500 coursework. It helps graduate students review machine learning fundamentals through plain-English explanations, interactive quizzes, and honest, grounded answers.</p>
+                    <p style="margin-bottom: 12px;"><strong>Description:</strong> The chatbot uses Retrieval-Augmented Generation (RAG). Three course study guides I authored are split into chunks, converted into embeddings, and stored in a vector index. When a student asks a question, the system retrieves the most relevant passages and uses them to generate an answer, displaying the source files under every response. If a question falls outside the study guides, the bot says so honestly instead of guessing, and it refuses to write graded work, protecting academic integrity by design.</p>
+                    <p style="margin-bottom: 12px;"><strong>Objective:</strong> To demonstrate, end to end, how a responsibly designed AI assistant is planned, built, tested, and deployed: grounding answers in verified content to reduce hallucination, keeping the system inside a defined scope, and building safeguards in from day one rather than as afterthoughts.</p>
+                    <p style="margin-bottom: 12px;"><strong>Process:</strong> I followed the design thinking cycle. I began by empathizing with my audience, busy graduate students, and defined the problem as needing a trustworthy, quick way to review course concepts. I planned the bot with ten design questions before writing any code, built the RAG pipeline (chunking, embeddings, cosine-similarity retrieval, generation), wrote ten test scenarios before testing, and iterated until all checks passed. When my original hosting platform moved behind a paywall mid-project, I ported the interface to Streamlit and redeployed, which validated keeping the pipeline separate from the UI. I also added a fallback so the bot returns a study-guide excerpt if the AI service ever fails, so users never see an error.</p>
+                    <p style="margin-bottom: 12px;"><strong>Tools and Technologies Used:</strong> Python, Streamlit, sentence-transformers (all-MiniLM-L6-v2 embeddings), NumPy, Fireworks AI (GLM 5.3 Flash model), GitHub, Streamlit Community Cloud, and Claude (Anthropic) for AI-assisted development with my own review and testing of every component.</p>
+                    <p style="margin-bottom: 6px;"><strong>Value Proposition:</strong></p>
+                    <p style="margin-bottom: 12px;"><em>Unique Value:</em> This is not a description of a project, it is the working product itself, live on the internet for anyone to test. It shows I can take an AI concept from empathy and planning through engineering, testing, and deployment, and that I design AI with honesty and guardrails: grounded answers with visible sources, honest refusals outside its scope, and academic integrity protections built in.</p>
+                    <p style="margin-bottom: 12px;"><em>Relevance:</em> Organizations everywhere are adopting AI assistants and struggling with hallucination, scope creep, and trust. This artifact demonstrates the exact pattern, RAG with human-centered safeguards, that makes AI assistants reliable in professional settings, the same approach I apply as an AI/ML engineer in financial services.</p>
+                    <p><strong>References:</strong> Not applicable (original work; AI assistance disclosed above).</p>
                 </div>
             </div>
         </div>
